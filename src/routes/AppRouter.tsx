@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from '../components/Layout';
+import Spinner from '../components/Spinner';
 
 const Home = lazy(() => import('../pages/Home'));
 const PhotoDetails = lazy(() => import('../pages/PhotoDetails'));
@@ -8,7 +9,13 @@ const PhotoDetails = lazy(() => import('../pages/PhotoDetails'));
 const AppRouter = () => {
   return (
     <Layout>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div className="page-loader">
+            <Spinner />
+          </div>
+        }
+      >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/photo/:id" element={<PhotoDetails />} />

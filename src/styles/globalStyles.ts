@@ -34,6 +34,13 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     font-family: inherit;
   }
+
+  .page-loader {
+    width: fit-content;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export default GlobalStyle;
