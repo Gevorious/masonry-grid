@@ -5,7 +5,6 @@ export const Info = styled.div`
   flex-direction: column;
   gap: 8px;
   color: #333;
-  padding: 24px;
 
   h2 {
     font-size: 1.2rem;

@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 const BackButton = styled.button`
   margin-bottom: 16px;
-  padding: 8px 16px;
   border: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 1rem;
   font-weight: 600;
   color: #616161;

@@ -4,6 +4,7 @@ import { usePhotoDetails } from './hooks/usePhotoDetails';
 import { Image, Info } from './partials';
 import './styles.css';
 import Spinner from '../../components/Spinner';
+import { FaLongArrowAltLeft } from 'react-icons/fa';
 
 const PhotoDetails = () => {
   const { id } = useParams();
@@ -21,11 +22,13 @@ const PhotoDetails = () => {
 
   return (
     <div className="photo-details">
-      <BackButton onClick={() => navigate(-1)}>← Back</BackButton>
+      <BackButton onClick={() => navigate(-1)}>
+        <FaLongArrowAltLeft size={20} /> Back
+      </BackButton>
       <div className="photo-details__content">
         <Image src={photo.src.large} alt={photo.alt} />
+        <h2>{photo.alt || photo.photographer}</h2>
         <Info>
-          <h2>{photo.alt || photo.photographer}</h2>
           <p>
             <strong>Photographer: </strong>
             {photo.photographer}
