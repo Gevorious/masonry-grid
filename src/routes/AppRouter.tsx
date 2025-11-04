@@ -11,7 +11,7 @@ const AppRouter = () => {
     <Layout>
       <Suspense
         fallback={
-          <div className="page-loader">
+          <div className="spinner-wrapper">
             <Spinner size={40} />
           </div>
         }

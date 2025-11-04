@@ -35,12 +35,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: inherit;
   }
 
-  .page-loader {
-    width: fit-content;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  .spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
 `;
 
 export default GlobalStyle;

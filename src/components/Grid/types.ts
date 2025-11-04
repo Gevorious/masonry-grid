@@ -1,10 +1,11 @@
 export type Photo = {
   id: number;
-  src: { small: string; medium: string; large2x: string };
+  src: { small: string; medium: string; large: string };
   photographer: string;
   width: number;
   height: number;
   url: string;
+  alt: string;
 };
 
 export type Grid = {

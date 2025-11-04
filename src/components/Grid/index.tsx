@@ -37,7 +37,7 @@ const Grid = ({
           <Column key={`${col[0].id}_${i}`} gap={gap}>
             {col.map((photo, j) =>
               renderItem ? (
-                renderItem(photo)
+                <div key={`${photo.id}_${j}`}> {renderItem(photo)}</div>
               ) : (
                 <VirtualPhoto key={`${photo.id}_${j}`} photo={photo} />
               ),

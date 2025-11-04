@@ -35,7 +35,7 @@ const InfiniteScroll = ({
           throttledLoadMore();
         }
       },
-      { rootMargin: '0px', threshold: 0.1 },
+      { rootMargin: '50px', threshold: 1 },
     );
 
     observer.observe(el);

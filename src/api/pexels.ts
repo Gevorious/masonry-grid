@@ -30,3 +30,17 @@ export const searchPhotos = async (
   const data = await res.json();
   return data;
 };
+
+export const getPhotoDetails = async (id: number): Promise<Photo> => {
+  const res = await fetch(`${BASE_URL}/photos/${id}`, {
+    headers: {
+      Authorization: import.meta.env.VITE_PEXELS_API_KEY,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch photo details');
+  }
+
+  return res.json();
+};
