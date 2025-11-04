@@ -4,13 +4,13 @@ import { LayoutProps } from './types';
 const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* ensures footer sticks to bottom */
+  min-height: 100vh;
   background-color: #f9f9f9;
 `;
 
 const MainContent = styled.main`
-  flex: 1; /* takes all remaining space between header and footer */
-  padding: 16px; /* you can adjust or make responsive */
+  flex: 1;
+  padding: 16px;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;

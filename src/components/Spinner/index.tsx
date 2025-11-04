@@ -15,6 +15,7 @@ const SpinnerWrapper = styled.div<{ size: number }>`
     animation: ${spin} 0.8s linear infinite;
     width: ${(props) => props.size}px;
     height: ${(props) => props.size}px;
+    fill: #646464;
   }
 `;
 
