@@ -15,6 +15,11 @@ export const curatedPhotos = async (
       },
     },
   );
+
+  if (!res.ok) {
+    throw new Error('Problem with fetching photos');
+  }
+
   const data = await res.json();
   return data;
 };
@@ -27,6 +32,11 @@ export const searchPhotos = async (
       Authorization: API_KEY,
     },
   });
+
+  if (!res.ok) {
+    throw new Error('Problem with fetching photos');
+  }
+
   const data = await res.json();
   return data;
 };

@@ -25,13 +25,15 @@ const Home = () => {
 
   const { photos, isLoading, error } = isSearching ? search : curated;
 
+  if (error) {
+    throw error;
+  }
+
   return (
     <div className="home">
       <div className="home__search">
         <Search onSearch={setSearchTerm} delay={300} />
       </div>
-
-      {error && <div className="error">{error.message}</div>}
 
       {isSearching ? (
         <>

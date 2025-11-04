@@ -17,8 +17,13 @@ const PhotoDetails = () => {
         <Spinner />
       </div>
     );
-  if (error) return <div>Error loading photo</div>;
-  if (!photo) return null;
+  if (error) {
+    throw error;
+  }
+
+  if (!photo) {
+    return null;
+  }
 
   return (
     <div className="photo-details">
