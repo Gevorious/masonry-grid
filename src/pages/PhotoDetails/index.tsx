@@ -27,8 +27,8 @@ const PhotoDetails = () => {
       </BackButton>
       <div className="photo-details__content">
         <Image src={photo.src.large} alt={photo.alt} />
-        <h2>{photo.alt || photo.photographer}</h2>
         <Info>
+          <h2>{photo.alt || photo.photographer}</h2>
           <p>
             <strong>Photographer: </strong>
             {photo.photographer}
