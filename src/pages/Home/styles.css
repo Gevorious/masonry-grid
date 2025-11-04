@@ -1,0 +1,14 @@
+.home {
+}
+
+.home__search {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.home .spinner__wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  min-height: 10px;
+}
