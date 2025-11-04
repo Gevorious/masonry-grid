@@ -1,6 +1,6 @@
 export type Photo = {
   id: number;
-  src: { medium: string; large2x: string };
+  src: { small: string; medium: string; large2x: string };
   photographer: string;
   width: number;
   height: number;
@@ -20,4 +20,8 @@ export type GridWrapperProps = {
 
 export type ColumnProps = {
   gap: Grid['gap'];
+};
+
+export type VirtualPhotoProps = {
+  photo: Photo;
 };

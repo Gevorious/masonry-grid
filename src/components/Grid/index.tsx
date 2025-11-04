@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import GridWrapper from './GridWrapper';
 import Column from './Column';
 import { calculateColumns, distributePhotos } from './actions';
 import { Grid as GridProps, Photo } from './types';
 import { debounce } from '../../utils/debounce';
+import VirtualPhoto from './VirtualPhoto';
 
 const Grid = ({
   photos,
@@ -21,7 +22,7 @@ const Grid = ({
       const width = containerRef.current!.clientWidth;
       const cols = calculateColumns(width, columnWidth, gap);
       setColumns(distributePhotos(photos, cols, columnWidth, gap));
-    }, 100);
+    }, 50);
 
     updateColumns();
     window.addEventListener('resize', updateColumns);
@@ -30,31 +31,22 @@ const Grid = ({
 
   return (
     <GridWrapper ref={containerRef} gap={gap}>
-      {columns.map((col) => (
-        <Column key={crypto.randomUUID() as string} gap={gap}>
-          {col.map((photo) =>
-            renderItem ? (
-              renderItem(photo)
-            ) : (
-              <img
-                key={photo.id}
-                src={photo.src.medium}
-                alt={photo.photographer}
-                style={{
-                  width: '100%',
-                  display: 'block',
-                  borderRadius: 5,
-                  opacity: 0,
-                  transition: 'opacity 0.2s ease-in-out',
-                }}
-                onLoad={(e) => (e.currentTarget.style.opacity = '1')}
-              />
-            ),
-          )}
-        </Column>
-      ))}
+      {columns.map((col, i) => {
+        if (!col.length) return;
+        return (
+          <Column key={`${col[0].id}_${i}`} gap={gap}>
+            {col.map((photo, j) =>
+              renderItem ? (
+                renderItem(photo)
+              ) : (
+                <VirtualPhoto key={`${photo.id}_${j}`} photo={photo} />
+              ),
+            )}
+          </Column>
+        );
+      })}
     </GridWrapper>
   );
 };
 
-export default Grid;
+export default memo(Grid);
