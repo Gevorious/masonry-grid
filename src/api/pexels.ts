@@ -21,17 +21,12 @@ export const curatedPhotos = async (
 
 export const searchPhotos = async (
   query: string,
-  page = 1,
-  per_page = 30,
 ): Promise<{ photos: Photo[] }> => {
-  const res = await fetch(
-    `${BASE_URL}/search?query=${query}&page=${page}&per_page=${per_page}`,
-    {
-      headers: {
-        Authorization: API_KEY,
-      },
+  const res = await fetch(`${BASE_URL}/search?query=${query}`, {
+    headers: {
+      Authorization: API_KEY,
     },
-  );
+  });
   const data = await res.json();
   return data;
 };
