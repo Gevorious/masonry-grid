@@ -1,75 +1,47 @@
-# React + TypeScript + Vite
+# Masonry Grid Photo Gallery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive, dynamic photo gallery app built with **React**, **TypeScript**, and **Styled Components**, featuring infinite scrolling, search, and a detailed photo view.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Environment Variables
 
-## React Compiler
+Copy `.env.template` to `.env` and fill in your own Pexels API key:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Features
 
-Note: This will impact Vite dev & build performances.
+- **Infinite Scroll** for curated photos.
+- **Search** photos by keyword.
+- **Photo Details** view showing photographer, description, and full-size image.
+- **Responsive Design** with dynamic columns.
+- **Error Boundaries** to handle unexpected runtime errors gracefully.
+- **Custom Hooks** for data fetching and state management.
+- **Unit Tests** for Grid and virtualized photo rendering.
+  _Note: Only one test is implemented for demonstration purposes, as this is an interview task and full test coverage was not completed._
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Frontend:** Node v24, React v19, TypeScript, Styled Components
+- **Testing:** Vitest + React Testing Library
+- **API:** Pexels API (for photos)
+- **Utilities:** Custom debounce, throttle
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Project Structure
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+src/
+├─ api/ # API service
+├─ components/ # Reusable UI components
+│ ├─ Grid/ # Masonry Grid, Columns, VirtualPhoto
+│ ├─ InfiniteScroll/ # Infinite Scroll Wrapper
+│ ├─ Search/ # Search input
+│ ├─ Spinner/ # Loading indicator
+│ └─ ...
+├─ hooks/ # Custom hooks (useVisibilityObserver)
+├─ pages/ # App pages (Home, PhotoDetails)
+├─ utils/ # Utilities (debounce, throttle)
+└─ routes/ # App Router
+└─ styles/ # Global styles

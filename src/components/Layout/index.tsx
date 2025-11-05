@@ -19,9 +19,7 @@ const MainContent = styled.main`
 const Layout = ({ children }: LayoutProps) => {
   return (
     <PageWrapper>
-      {/* Header will go here later */}
       <MainContent>{children}</MainContent>
-      {/* Footer will go here later */}
     </PageWrapper>
   );
 };
