@@ -14,6 +14,7 @@ const VirtualPhoto = ({ photo }: VirtualPhotoProps) => {
           src={photo.src.medium}
           alt={photo.photographer}
           onLoad={(e) => (e.currentTarget.style.opacity = '1')}
+          data-testid="virtual-photo"
         />
       ) : (
         <Placeholder />

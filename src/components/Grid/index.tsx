@@ -34,7 +34,7 @@ const Grid = ({
       {columns.map((col, i) => {
         if (!col.length) return;
         return (
-          <Column key={`${col[0].id}_${i}`} gap={gap}>
+          <Column key={`${col[0].id}_${i}`} gap={gap} data-testid="grid-column">
             {col.map((photo, j) =>
               renderItem ? (
                 <div key={`${photo.id}_${j}`}> {renderItem(photo)}</div>
