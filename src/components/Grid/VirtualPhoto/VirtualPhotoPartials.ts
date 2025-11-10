@@ -10,6 +10,18 @@ export const Wrapper = styled.div.attrs<{ $ratio: string }>((props) => ({
   overflow: hidden;
   background: #eee;
   display: flex;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    0 6px 6px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  &:hover {
+    transform: scale(1.02);
+    box-shadow:
+      0 10px 20px rgba(0, 0, 0, 0.1),
+      0 6px 6px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const Image = styled.img`
