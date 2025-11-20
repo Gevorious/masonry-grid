@@ -1,6 +1,6 @@
 export type Photo = {
   id: number;
-  src: { small: string; medium: string; large: string };
+  src: { small: string; medium: string; large: string; tiny: string };
   photographer: string;
   width: number;
   height: number;

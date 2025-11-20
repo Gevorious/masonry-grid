@@ -1,25 +1,40 @@
 import styled from 'styled-components';
 import { LayoutProps } from './types';
+import { DesktopSidebar, MobileSidebar } from '../Sidebar';
 
 const PageWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
   background-color: #f9f9f9;
+
+  @media (max-width: 768px) {
+    margin-top: 40px;
+  }
 `;
 
-const MainContent = styled.main`
+const Outlet = styled.main`
   flex: 1;
   padding: 16px;
   width: 100%;
-  max-width: 1440px;
+  @media (min-width: 767px) {
+    margin-left: 16rem;
+  }
+`;
+
+const OutletContent = styled.div`
   margin: 0 auto;
+  max-width: 1400px;
+  width: 100%;
 `;
 
 const Layout = ({ children }: LayoutProps) => {
   return (
     <PageWrapper>
-      <MainContent>{children}</MainContent>
+      <DesktopSidebar />
+      <MobileSidebar />
+      <Outlet>
+        <OutletContent>{children}</OutletContent>
+      </Outlet>
     </PageWrapper>
   );
 };

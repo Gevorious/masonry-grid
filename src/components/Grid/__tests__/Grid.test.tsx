@@ -14,7 +14,7 @@ const mockPhotos: Photo[] = [
     height: 400,
     alt: 'Photo 1',
     photographer: 'John Doe',
-    src: { small: '', medium: '', large: '' },
+    src: { small: '', medium: '', large: '', tiny: '' },
     url: '',
   },
   {
@@ -23,7 +23,7 @@ const mockPhotos: Photo[] = [
     height: 300,
     alt: 'Photo 2',
     photographer: 'Jane Doe',
-    src: { small: '', medium: '', large: '' },
+    src: { small: '', medium: '', large: '', tiny: '' },
     url: '',
   },
   {
@@ -32,7 +32,7 @@ const mockPhotos: Photo[] = [
     height: 250,
     alt: 'Photo 3',
     photographer: 'Sam',
-    src: { small: '', medium: '', large: '' },
+    src: { small: '', medium: '', large: '', tiny: '' },
     url: '',
   },
 ];

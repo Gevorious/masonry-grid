@@ -58,6 +58,7 @@ const Home = () => {
         >
           <Grid
             photos={photos}
+            gap={24}
             renderItem={(photo) => (
               <Link to={`/photo/${photo.id}`}>
                 <VirtualPhoto photo={photo} />

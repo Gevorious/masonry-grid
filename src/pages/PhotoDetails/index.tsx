@@ -1,15 +1,33 @@
+import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
 import { usePhotoDetails } from './hooks/usePhotoDetails';
-import { Image, Info } from './partials';
-import './styles.css';
+import { Image, Info } from './styles';
 import Spinner from '../../components/Spinner';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
+import { useRecentStore } from '../../store/useRecentStore';
+import { Photo } from '../../components/Grid/types';
+import './styles.css';
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+} from '../../components/PhotoCard';
 
 const PhotoDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { photo, isLoading, error } = usePhotoDetails(Number(id));
+  const { id: photoId, src, photographer, alt } = (photo as Photo) || {};
+
+  const addItem = useRecentStore((state) => state.addItem);
+
+  useEffect(() => {
+    if (photo) {
+      addItem({ id: photoId, thumbnail: src.tiny, photographer });
+    }
+  }, [photo]);
 
   if (isLoading)
     return (
@@ -27,23 +45,25 @@ const PhotoDetails = () => {
 
   return (
     <div className="photo-details">
-      <BackButton onClick={() => navigate(-1)}>
-        <FaLongArrowAltLeft size={20} /> Back
-      </BackButton>
-      <div className="photo-details__content">
-        <Image src={photo.src.large} alt={photo.alt} />
-        <Info>
-          <h2>{photo.alt || photo.photographer}</h2>
-          <p>
-            <strong>Photographer: </strong>
-            {photo.photographer}
-          </p>
-          <p>
-            <strong>Description: </strong>
-            {photo.alt || 'No description available'}
-          </p>
-        </Info>
-      </div>
+      <Card>
+        <CardHeader>
+          <BackButton onClick={() => navigate(-1)}>
+            <FaLongArrowAltLeft size={20} /> Back
+          </BackButton>
+        </CardHeader>
+        <CardBody>
+          <Image src={src.large} alt={photo.alt} />
+        </CardBody>
+        <CardFooter>
+          <Info>
+            <p>
+              <strong>Photographer: </strong>
+              <em>{photographer}</em>
+            </p>
+            <p>{alt || 'No description available'}</p>
+          </Info>
+        </CardFooter>
+      </Card>
     </div>
   );
 };

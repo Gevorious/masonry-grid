@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const BackButton = styled.button`
-  margin-bottom: 16px;
   border: none;
   display: flex;
   align-items: center;
