@@ -16,7 +16,6 @@ export const Info = styled.div`
 `;
 
 export const Image = styled.img`
-  max-height: 90vh;
   height: auto;
   width: auto;
   border-radius: 12px;

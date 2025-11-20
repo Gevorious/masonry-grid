@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
 import { usePhotoDetails } from './hooks/usePhotoDetails';
@@ -20,6 +20,7 @@ const PhotoDetails = () => {
   const navigate = useNavigate();
   const { photo, isLoading, error } = usePhotoDetails(Number(id));
   const { id: photoId, src, photographer, alt } = (photo as Photo) || {};
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
 
   const addItem = useRecentStore((state) => state.addItem);
 
@@ -45,14 +46,18 @@ const PhotoDetails = () => {
 
   return (
     <div className="photo-details">
-      <Card>
+      <Card style={{ visibility: isImgLoaded ? 'visible' : 'hidden' }}>
         <CardHeader>
           <BackButton onClick={() => navigate(-1)}>
             <FaLongArrowAltLeft size={20} /> Back
           </BackButton>
         </CardHeader>
         <CardBody>
-          <Image src={src.large} alt={photo.alt} />
+          <Image
+            src={src.large}
+            alt={photo.alt}
+            onLoad={() => setIsImgLoaded(true)}
+          />
         </CardBody>
         <CardFooter>
           <Info>
