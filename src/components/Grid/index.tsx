@@ -19,7 +19,9 @@ const Grid = ({
     if (!containerRef.current) return;
 
     const updateColumns = debounce(() => {
-      const width = containerRef.current!.clientWidth;
+      if (!containerRef.current) return;
+
+      const width = containerRef.current.clientWidth;
       const cols = calculateColumns(width, columnWidth, gap);
       setColumns(distributePhotos(photos, cols, columnWidth, gap));
     }, 50);

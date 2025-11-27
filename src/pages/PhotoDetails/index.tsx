@@ -7,13 +7,13 @@ import Spinner from '../../components/Spinner';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
 import { useRecentStore } from '../../store/useRecentStore';
 import { Photo } from '../../components/Grid/types';
-import './styles.css';
 import {
   Card,
   CardBody,
   CardFooter,
   CardHeader,
 } from '../../components/PhotoCard';
+import './styles.css';
 
 const PhotoDetails = () => {
   const { id } = useParams();

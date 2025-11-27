@@ -35,22 +35,10 @@ const Home = () => {
         <Search onSearch={setSearchTerm} delay={300} />
       </div>
 
-      {isSearching ? (
-        <>
-          <Grid
-            photos={photos}
-            renderItem={(photo) => (
-              <Link to={`/photo/${photo.id}`}>
-                <VirtualPhoto photo={photo} />
-              </Link>
-            )}
-          />
-          {isLoading && (
-            <div className="spinner-wrapper">
-              <Spinner />
-            </div>
-          )}
-        </>
+      {isLoading ? (
+        <div className="spinner-wrapper">
+          <Spinner />
+        </div>
       ) : (
         <InfiniteScroll
           onLoadMore={curated.changePage}
@@ -65,11 +53,6 @@ const Home = () => {
               </Link>
             )}
           />
-          {isLoading && (
-            <div className="spinner-wrapper">
-              <Spinner />
-            </div>
-          )}
         </InfiniteScroll>
       )}
     </div>

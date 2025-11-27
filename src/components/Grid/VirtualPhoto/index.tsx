@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useVisibilityObserver } from '../../../hooks/useVisibilityObserver';
-import { Wrapper, Placeholder, Image } from './VirtualPhotoPartials';
+import { Wrapper, Placeholder, Image } from './styles';
 import { VirtualPhotoProps } from '../types';
 
 const VirtualPhoto = ({ photo }: VirtualPhotoProps) => {
