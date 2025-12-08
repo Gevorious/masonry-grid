@@ -1,7 +1,18 @@
 .home {
+  position: relative;
+}
+
+.home__search-wrapper {
+  width: 100%;
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  padding: 16px 0 32px 0;
 }
 
 .home__search {
+  flex-grow: 1;
   max-width: 500px;
-  margin: 20px auto;
+  margin: 0 auto;
 }

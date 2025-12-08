@@ -5,9 +5,9 @@ import Spinner from '../../components/Spinner';
 import InfiniteScroll from '../../components/InfiniteScroll';
 import { useCuratedPhotos } from './hooks/useCuratedPhotos';
 import { useSearchPhotos } from './hooks/useSearchPhotos';
-import './styles.css';
 import VirtualPhoto from '../../components/Grid/VirtualPhoto';
 import { Link } from 'react-router-dom';
+import './styles.css';
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -31,14 +31,27 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="home__search">
-        <Search onSearch={setSearchTerm} delay={300} />
-      </div>
-
-      {isLoading ? (
-        <div className="spinner-wrapper">
-          <Spinner />
+      <div className="home__search-wrapper">
+        <div className="home__search">
+          <Search onSearch={setSearchTerm} delay={300} />
         </div>
+      </div>
+      {isSearching ? (
+        <>
+          <Grid
+            photos={photos}
+            renderItem={(photo) => (
+              <Link to={`/photo/${photo.id}`}>
+                <VirtualPhoto photo={photo} />
+              </Link>
+            )}
+          />
+          {isLoading && (
+            <div className="spinner-wrapper">
+              <Spinner />
+            </div>
+          )}
+        </>
       ) : (
         <InfiniteScroll
           onLoadMore={curated.changePage}
@@ -53,6 +66,11 @@ const Home = () => {
               </Link>
             )}
           />
+          {isLoading && (
+            <div className="spinner-wrapper">
+              <Spinner />
+            </div>
+          )}
         </InfiniteScroll>
       )}
     </div>
